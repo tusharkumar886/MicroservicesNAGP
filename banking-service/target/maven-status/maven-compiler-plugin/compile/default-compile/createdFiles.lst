@@ -1,0 +1,8 @@
+com\nagarro\microservices\bankingservice\beans\Account.class
+com\nagarro\microservices\bankingservice\controller\ChequeBookController.class
+com\nagarro\microservices\bankingservice\BankingServiceApplication.class
+com\nagarro\microservices\bankingservice\exception\ResourceNotFoundException.class
+com\nagarro\microservices\bankingservice\proxy\Customer.class
+com\nagarro\microservices\bankingservice\repository\AccountRepository.class
+com\nagarro\microservices\bankingservice\proxy\CustomerServiceProxy.class
+com\nagarro\microservices\bankingservice\controller\AccountController.class

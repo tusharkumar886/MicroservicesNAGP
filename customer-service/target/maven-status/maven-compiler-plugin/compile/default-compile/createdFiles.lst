@@ -1,0 +1,5 @@
+com\nagarro\microservices\customerservice\CustomerServiceApplication.class
+com\nagarro\microservices\customerservice\controller\CustomerController.class
+com\nagarro\microservices\customerservice\exception\ResourceNotFoundException.class
+com\nagarro\microservices\customerservice\beans\Customer.class
+com\nagarro\microservices\customerservice\repository\CustomerRepository.class

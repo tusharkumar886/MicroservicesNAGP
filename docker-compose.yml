@@ -1,0 +1,75 @@
+version: "2"
+services:
+ mysql1:
+       image: mysql/mysql-server:5.7
+       container_name: mysql1
+       environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: banking
+ 
+ eureka:
+       container_name: eureka
+       image:
+            tusharkumar886/eureka-server:latest
+       expose:
+            - 8761
+       ports:
+            - "8761:8761"   
+       hostname: eureka-service
+       
+ zuul-gateway:
+       container_name: zuul-server
+       image:
+            tusharkumar886/zuul-server:latest
+       expose:
+            - 8765
+       ports:
+            - "8765:8765" 
+       links:
+            - eureka:eureka
+       depends_on:
+            - eureka
+
+ customer-service:
+       container_name: customer-service
+       image:
+            tusharkumar886/customer-service:latest
+       expose:
+            - 8000
+       ports:
+            - "8000:8000" 
+       links:
+            - eureka:eureka
+            - mysql1:mysql1
+            - config-server:config-server
+       depends_on:
+            - eureka
+            - mysql1
+            - config-server
+ 
+ banking-service:
+       container_name: banking-service
+       image:
+            tusharkumar886/banking-service:latest
+       expose:
+            - 8100
+       ports:
+            - "8100:8100" 
+       links:
+            - eureka:eureka
+            - customer-service:customer-service
+            - mysql1:mysql1
+            - config-server:config-server
+       depends_on:
+            - eureka
+            - mysql1
+            - config-server
+            - customer-service
+ config-server:
+       container_name: config-server
+       image:
+            tusharkumar886/config-server:latest
+       expose:
+            - 8888
+       ports:
+            - "8888:8888"
