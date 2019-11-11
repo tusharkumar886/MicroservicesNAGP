@@ -44,7 +44,7 @@ public class AccountController {
 	 * @return Account details
 	 */
 	@GetMapping("/users/{userId}/accounts")
-	public List<Account> getAllCommentsByPostId(@PathVariable(value = "userId") Long userId) {
+	public List<Account> getAccountsByUserId(@PathVariable(value = "userId") Long userId) {
 		return accountRepository.findByCustomerUserId(userId);
 	}
 
